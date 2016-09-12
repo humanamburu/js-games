@@ -1,0 +1,12 @@
+#modules
+node_modules
+.npm
+
+#ide
+.idea
+
+#logs
+.log
+
+#build
+dist
