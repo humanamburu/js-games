@@ -10,9 +10,12 @@ const store = configureStore();
 //Needed for React Developer Tools
 window.React = React;
 
+//TODO: add menu and routing
+import Tutorial from './components/levels/tutorial/index.es';
+
 render(
     <Provider store={store}>
-        <div>hello</div>
+        <Tutorial />
     </Provider>,
     document.getElementById('react-main-app')
 );
