@@ -1,9 +1,9 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: "./src/index.es",
+    entry: "./client/src/index.es",
     output: {
-        path: __dirname + '/dist',
+        path: __dirname + '/client/dist',
         filename: "scripts/scripts.bundle.js"
     },
     devtool: 'source-map',
@@ -30,7 +30,7 @@ module.exports = {
     watch: true,
     //generate html template for application
     plugins: [new HtmlWebpackPlugin({
-        title: 'UI template',
-        template: './src/index.template.pug'
+        title: 'JS Games',
+        template: './client/src/index.template.pug'
     })]
 };

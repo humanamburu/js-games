@@ -1,2 +1,2 @@
 # js-games
-games for programmers
+game for developers
