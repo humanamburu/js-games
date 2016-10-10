@@ -11,7 +11,7 @@ const store = configureStore();
 window.React = React;
 
 //TODO: add menu and routing
-import Tutorial from './components/levels/tutorial/index.es';
+import Tutorial from './components/levels/tutorial/tutorial.es';
 
 render(
     <Provider store={store}>

@@ -1,16 +1,19 @@
 import './_tutorial.styl';
 
-import React from 'react';
 import { Component } from 'react';
+
+//components
+import Dummie from '../../dummie/dummie.es';
+import Logo from '../../logo/logo.es';
 
 export default class Tutorial extends Component {
     render() {
         return(
             <div className="tutorial-container">
-                <div className="logo">
-                    <div className="commando"></div>
-                    <div className="project-name">JS Game</div>
-                </div>
+                <Logo />
+                <Dummie />
+                <Dummie />
+                <Dummie />
             </div>
         );
     }
