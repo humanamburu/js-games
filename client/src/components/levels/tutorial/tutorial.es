@@ -19,6 +19,7 @@ export default class Tutorial extends Component {
                     <Dummie />
                     <Dummie />
                 </div>
+                <div className="knight"></div>
             </div>
         );
     }
