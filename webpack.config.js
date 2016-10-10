@@ -1,12 +1,17 @@
+var Webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
+function isProduction() {
+    return process.env.NODE_ENV === 'production';
+}
+
 module.exports = {
-    entry: "./client/src/tutorial.es",
+    entry: "./client/src/index.es",
     output: {
         path: __dirname + '/client/dist',
         filename: "scripts/scripts.bundle.js"
     },
-    devtool: 'source-map',
+    devtool: isProduction() ? '' : 'source-map',
     module: {
         loaders: [
             {
@@ -32,13 +37,20 @@ module.exports = {
             {
                 test: /\.gif$/,
                 loaders: ['url-loader?limit=150000']
-            },
+            }
         ]
     },
-    watch: true,
+    watch: !isProduction(),
     //generate html template for application
-    plugins: [new HtmlWebpackPlugin({
-        title: 'JS Game',
-        template: './client/src/index.template.pug'
-    })]
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: 'JS Game',
+            template: './client/src/index.template.pug'
+        }),
+        new Webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify(process.env.NODE_ENV || '')
+            }
+        })
+    ]
 };
