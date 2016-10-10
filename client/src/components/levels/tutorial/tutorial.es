@@ -14,9 +14,11 @@ export default class Tutorial extends Component {
             <div className="tutorial-container">
                 <Logo />
                 <Tip text={'Type help() in console for details.'} />
-                <Dummie />
-                <Dummie />
-                <Dummie />
+                <div className="dummies-container">
+                    <Dummie />
+                    <Dummie />
+                    <Dummie />
+                </div>
             </div>
         );
     }
