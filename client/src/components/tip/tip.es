@@ -7,6 +7,7 @@ export default class Tip extends PureComponent {
         const { text } = this.props;
         return(
             <div className="tip">
+                <div className="commando"></div>
                 {text}
             </div>
         );
