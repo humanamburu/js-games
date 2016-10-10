@@ -29,6 +29,10 @@ module.exports = {
                 test: /\.png$/,
                 loaders: ['url-loader?limit=150000']
             },
+            {
+                test: /\.gif$/,
+                loaders: ['url-loader?limit=150000']
+            },
         ]
     },
     watch: true,

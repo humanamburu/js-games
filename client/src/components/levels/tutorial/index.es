@@ -7,7 +7,10 @@ export default class Tutorial extends Component {
     render() {
         return(
             <div className="tutorial-container">
-                <div className="project-name">JS Games</div>
+                <div className="logo">
+                    <div className="commando"></div>
+                    <div className="project-name">JS Game</div>
+                </div>
             </div>
         );
     }

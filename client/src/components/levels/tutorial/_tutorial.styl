@@ -1,3 +1,6 @@
+commando-w = commando-h = 128px
+logo-w = 355px
+
 .tutorial-container
   background url(../../../assets/background/bg_green.png)
   min-height 100%
@@ -9,9 +12,20 @@
   top 0
   left 0
 
+  .logo
+    position absolute
+    display inline-block
+    width logo-w
+    bottom 5%
+    right 5%
+
   .project-name
     font-size 72px
     color #fff
-    position absolute
-    bottom 5%
-    right 5%
+    display inline-block
+
+  .commando
+    width commando-w
+    height commando-h
+    display inline-block
+    background url(../../../assets/shared/commando.gif)
