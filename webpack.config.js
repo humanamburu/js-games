@@ -1,5 +1,29 @@
 var Webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+//plugins
+var plugins = [];
+var htmlPlugin = new HtmlWebpackPlugin({
+    title: 'WSC',
+    template: './client/src/index.template.pug'
+});
+var defineProcessPlugin = new Webpack.DefinePlugin({
+    'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || '')
+    }
+});
+var uglifyPlugin = new Webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false }
+});
+
+function isProduction() {
+    return process.env.NODE_ENV === 'production';
+}
+
+plugins.push(htmlPlugin);
+plugins.push(defineProcessPlugin);
+if (isProduction()) {
+    plugins.push(uglifyPlugin);
+}
 
 function isProduction() {
     return process.env.NODE_ENV === 'production';
@@ -41,16 +65,5 @@ module.exports = {
         ]
     },
     watch: !isProduction(),
-    //generate html template for application
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: 'JS Game',
-            template: './client/src/index.template.pug'
-        }),
-        new Webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify(process.env.NODE_ENV || '')
-            }
-        })
-    ]
+    plugins: plugins
 };
