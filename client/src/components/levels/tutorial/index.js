@@ -2,6 +2,8 @@ import './_tutorial.styl';
 
 import { Component } from 'react';
 import translate from 'util/translator';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 //components
 import Dummie from 'components/dummie';
@@ -12,34 +14,44 @@ import Tip from 'components/tip';
 import tutorialScenario from 'scenarios/tutorial';
 import applyScenario from 'gameCore/applyScenario';
 
-const DUMMIES_LENGTH = 3;
+//selectors
+import { language } from 'selectors/gameSelectors';
 
-export default class Tutorial extends Component {
+//constants
+import Constants from 'constants/tutorial';
+
+class Tutorial extends Component {
     componentWillMount() {
         applyScenario(tutorialScenario);
     }
 
-    createDummies(length) {
+    createDummies() {
         const dummies = [];
-        for (let i = 0; i < DUMMIES_LENGTH; i++) {
+        for (let i = 0; i < Constants.DUMMIES_LENGTH; i++) {
             dummies.push(<Dummie key={i} number={i}/>)
         }
 
         return dummies;
     }
 
-    /* TODO: use translator */
     render() {
-
+        const tip = translate('DEVTOOLS_TIP', this.props.language);
         return(
             <div className="tutorial-container">
                 <Logo />
-                <Tip text={translate('TIP', 'eng')} />
+                <Tip text={tip} />
                 <div className="dummies-container">
-                    { this.createDummies(DUMMIES_LENGTH) }
+                    { this.createDummies() }
                 </div>
                 <div className="knight"></div>
             </div>
         );
     }
-};
+}
+
+const selector = createStructuredSelector({
+    language,
+});
+
+export default connect(selector)(Tutorial);
+

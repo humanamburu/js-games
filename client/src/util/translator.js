@@ -1,11 +1,14 @@
 import eng from 'dictionary/english';
+import ru from 'dictionary/russian';
 
 export default function translate(label, language) {
-    let text;
-
-    if (language === 'eng') {
-        text = eng[label];
+    const languages = {
+        ru,
+        eng,
+    };
+    if (languages[language] && languages[language][label]) {
+        return languages[language][label];
     }
 
-    return text ? text : '{{UNKNOWN}}'
+    return '{{UNKNOWN}}';
 }

@@ -3,9 +3,14 @@ import React from 'react';
 import { render } from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import configureStore from 'store';
+import store from 'store';
+import immutable from 'immutable';
+import installDevTools from 'immutable-devtools';
 
-const store = configureStore();
+if (process.env.NODE_ENV !== 'production') {
+    window.store = store;
+    installDevTools(immutable);
+}
 
 //Needed for React Developer Tools
 window.React = React;
