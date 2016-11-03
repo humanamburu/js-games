@@ -1,7 +1,7 @@
 import './_tutorial.styl';
 
 import { Component } from 'react';
-import translate from '../../../util/translator.es';
+import translate from 'util/translator.es';
 
 //components
 import Dummie from '../../dummie/dummie.es';

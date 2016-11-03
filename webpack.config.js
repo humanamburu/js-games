@@ -1,5 +1,6 @@
 var Webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path');
 //plugins
 var plugins = [];
 var htmlPlugin = new HtmlWebpackPlugin({
@@ -36,6 +37,9 @@ module.exports = {
         filename: "scripts/scripts.bundle.js"
     },
     devtool: isProduction() ? '' : 'source-map',
+    resolve: {
+        root: path.join(__dirname, 'client/src/'),
+    },
     module: {
         loaders: [
             {
@@ -48,7 +52,7 @@ module.exports = {
             },
             {
                 test: /\.styl$/,
-                loader: 'style-loader!css-loader!stylus-loader'
+                loader: 'style-loader!css-loader!stylus-loader?resolve url'
             },
             {
                 test: /\.pug$/,

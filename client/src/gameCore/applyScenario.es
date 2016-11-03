@@ -1,4 +1,4 @@
-import translate from '../util/translator.es';
+import translate from 'util/translator.es';
 export default function applyScenario(scenario) {
     window.help = function help() {
         //TODO: architecture
