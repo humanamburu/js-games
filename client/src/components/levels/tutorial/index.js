@@ -22,11 +22,16 @@ import Constants from 'constants/tutorial';
 
 class Tutorial extends Component {
     componentWillMount() {
-        applyScenario(tutorialScenario);
+        this.deleteScenario = applyScenario(window, tutorialScenario);
+    }
+
+    componentWillUnmount() {
+        this.deleteScenario();
     }
 
     createDummies() {
         const dummies = [];
+
         for (let i = 0; i < Constants.DUMMIES_LENGTH; i++) {
             dummies.push(<Dummie key={i} number={i}/>)
         }
