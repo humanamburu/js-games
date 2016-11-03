@@ -1,16 +1,16 @@
 import './_tutorial.styl';
 
 import { Component } from 'react';
-import translate from 'util/translator.es';
+import translate from 'util/translator';
 
 //components
-import Dummie from '../../dummie/dummie.es';
-import Logo from '../../logo/logo.es';
-import Tip from '../../tip/tip.es';
+import Dummie from 'components/dummie';
+import Logo from 'components/logo';
+import Tip from 'components/tip';
 
 //game
-import tutorialScenario from '../../../scenarios/tutorial.es';
-import applyScenario from '../../../gameCore/applyScenario.es';
+import tutorialScenario from 'scenarios/tutorial';
+import applyScenario from 'gameCore/applyScenario';
 
 const DUMMIES_LENGTH = 3;
 

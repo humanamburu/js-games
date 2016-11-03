@@ -1,4 +1,4 @@
-import eng from 'dictionary/english.es';
+import eng from 'dictionary/english';
 
 export default function translate(label, language) {
     let text;

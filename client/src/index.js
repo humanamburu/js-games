@@ -3,7 +3,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import configureStore from './store/store.es';
+import configureStore from 'store';
 
 const store = configureStore();
 
@@ -11,7 +11,7 @@ const store = configureStore();
 window.React = React;
 
 //TODO: add menu and routing
-import Tutorial from './components/levels/tutorial/tutorial.es';
+import Tutorial from './components/levels/tutorial';
 
 render(
     <Provider store={store}>

@@ -31,7 +31,7 @@ function isProduction() {
 }
 
 module.exports = {
-    entry: "./client/src/index.es",
+    entry: "./client/src/index",
     output: {
         path: __dirname + '/client/dist',
         filename: "scripts/scripts.bundle.js"
@@ -43,7 +43,7 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.es?$/,
+                test: /\.js?$/,
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel',
                 query: {
