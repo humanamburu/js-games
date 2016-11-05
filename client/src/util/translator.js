@@ -1,4 +1,6 @@
 import _ from 'lodash';
+import store from 'store';
+import { language as languageSelector } from 'selectors/gameSelectors';
 
 //dictionaries
 import eng from 'dictionary/english';
@@ -11,12 +13,26 @@ import ru from 'dictionary/russian';
  * @param language
  * @returns {*}
  */
-export function translateBy(languages, label, language) {
+function translateBy(languages, label, language) {
     if (languages[language] && languages[language][label]) {
         return languages[language][label];
     }
 
     return '{{UNKNOWN}}';
 }
+/**
+ * Translator binded to languages
+ */
+const translate = _.partial(translateBy, { eng, ru });
 
-export default _.partial(translateBy, { eng, ru });
+/**
+ * translate label according to current language in store
+ * @param label
+ */
+export function activeLanguageTranslation(label) {
+    const state = store.getState();
+
+    return translate(label, languageSelector(state));
+}
+
+export default translate;

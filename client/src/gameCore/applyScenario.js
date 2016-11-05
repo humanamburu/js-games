@@ -1,6 +1,4 @@
-import translate from 'util/translator';
-import store from 'store';
-import { language as languageSelector } from 'selectors/gameSelectors';
+import { activeLanguageTranslation } from 'util/translator';
 
 /**
  * apply scenario for current view.
@@ -8,7 +6,7 @@ import { language as languageSelector } from 'selectors/gameSelectors';
  * {
  *      description: lvl message
  *      help: message on help()
- *      [helpAnswer]:
+ *      [helpAnswer] result of help()
  *      game: {
  *          ...game API
  *      }
@@ -45,17 +43,8 @@ export default function applyScenario(scenario, element = window) {
  * @param type
  * @param label
  */
-function message(type, label) {
+export function message(type, label) {
     const message = activeLanguageTranslation(label);
 
     console[type](message);
-}
-/**
- * translate label according to current language in store
- * @param label
- */
-function activeLanguageTranslation(label) {
-    const state = store.getState();
-
-    return translate(label, languageSelector(state));
 }

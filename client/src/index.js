@@ -6,9 +6,11 @@ import { Provider } from 'react-redux';
 import store from 'store';
 import immutable from 'immutable';
 import installDevTools from 'immutable-devtools';
+import lodash from 'lodash';
 
 if (process.env.NODE_ENV !== 'production') {
     window.store = store;
+    window._ = lodash;
     installDevTools(immutable);
 }
 
