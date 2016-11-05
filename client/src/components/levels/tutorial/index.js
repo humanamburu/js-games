@@ -22,7 +22,7 @@ import Constants from 'constants/tutorial';
 
 class Tutorial extends Component {
     componentWillMount() {
-        this.deleteScenario = applyScenario(window, tutorialScenario);
+        this.deleteScenario = applyScenario(tutorialScenario);
     }
 
     componentWillUnmount() {
