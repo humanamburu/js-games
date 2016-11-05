@@ -1,3 +1,11 @@
+/**
+ * language label TEMPLATE:
+ *
+ * [SCENARIO NAME]_HELP
+ * [SCENARIO NAME]_HELP_ANSWER
+ * [SCENARIO NAME]_TASK_[TASK NAME]
+ *
+ */
 export default {
     DEVTOOLS_TIP: 'Нажми F12 на своей клавиатуре что бы открыть инструментарий разработчика!',
     TUTORIAL_WELCOME: 'Добро пожаловать в JS Games! Напиши help() в консоли что бы узнать подробности.',

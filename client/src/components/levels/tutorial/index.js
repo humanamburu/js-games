@@ -1,7 +1,7 @@
 import './_tutorial.styl';
 
 import { Component } from 'react';
-import translate from 'util/translator';
+import translate from 'utils/translator';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -12,10 +12,10 @@ import Tip from 'components/tip';
 
 //game
 import tutorialScenario from 'scenarios/tutorial';
-import applyScenario from 'gameCore/applyScenario';
+import applyScenario from 'game_core/apply_scenario';
 
 //selectors
-import { language } from 'selectors/gameSelectors';
+import { language } from 'selectors/game_selectors';
 
 //constants
 import Constants from 'constants/tutorial';

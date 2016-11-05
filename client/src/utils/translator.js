@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import store from 'store';
-import { language as languageSelector } from 'selectors/gameSelectors';
+import { language as languageSelector } from 'selectors/game_selectors';
 
 //dictionaries
 import eng from 'dictionary/english';

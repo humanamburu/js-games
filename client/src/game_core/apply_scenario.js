@@ -1,4 +1,4 @@
-import { activeLanguageTranslation } from 'util/translator';
+import { activeLanguageTranslation } from 'utils/translator';
 
 /**
  * apply scenario for current view.

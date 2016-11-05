@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { activeLanguageTranslation } from 'util/translator';
+import { activeLanguageTranslation } from 'utils/translator';
 /**
  * Create scenario function
  *
