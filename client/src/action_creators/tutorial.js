@@ -2,7 +2,7 @@ import ActionTypes from 'action_types/level';
 import { bindActionCreators } from 'redux';
 import store from 'store';
 
-//TODO: refactor like common api
+//TODO: refactor to common api
 export function gameInfoAction(name, info) {
     const action = {
         type: ActionTypes.SET_LEVEL_INFO,

@@ -48,7 +48,7 @@ class Tutorial extends Component {
                         })
                     }
                 </div>
-                <div className="knight"></div>
+                <div className="knight" data-answer="devtools is great!"></div>
             </div>
         );
     }
