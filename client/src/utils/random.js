@@ -1,4 +1,4 @@
-//todo: from -> to
-export function randomInteger(from = 0, to) {
-    return Math.round(Math.random() * to);
+
+export function randomInteger(from, to = Number.MAX_SAFE_INTEGER) {
+    return Math.round(Math.random() * (to - from) + from);
 }

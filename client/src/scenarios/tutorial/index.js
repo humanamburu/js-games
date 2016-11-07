@@ -17,13 +17,13 @@ export default create('TUTORIAL', {
 
 function arithmeticTask() {
     function getRandomOperation() {
-        const operations = ['+', '-', '*', '/', '%'];
+        const operations = ['+', '-', '*'];
 
         return operations[randomInteger(0, 5)]
     }
 
     const task = {
-        array: [Math.random(), Math.random()],
+        array: [randomInteger(1, 20), randomInteger(1, 20)],
         operation: getRandomOperation(),
     };
 

@@ -13,15 +13,15 @@ import Tip from 'components/tip';
 //game
 import tutorialScenario from 'scenarios/tutorial';
 import applyScenario from 'game_core/apply_scenario';
+import { setDummies } from 'action_creators/tutorial';
 
 //selectors
 import { language } from 'selectors/game_selectors';
-
-//constants
-import Constants from 'constants/tutorial';
+import { enemies } from 'selectors/level_selectors';
 
 class Tutorial extends Component {
     componentWillMount() {
+        setDummies();
         this.deleteScenario = applyScenario(tutorialScenario);
     }
 
@@ -29,24 +29,24 @@ class Tutorial extends Component {
         this.deleteScenario();
     }
 
-    createDummies() {
-        const dummies = [];
-
-        for (let i = 0; i < Constants.DUMMIES_LENGTH; i++) {
-            dummies.push(<Dummie key={i} number={i}/>)
-        }
-
-        return dummies;
-    }
-
     render() {
-        const tip = translate('DEVTOOLS_TIP', this.props.language);
+        const {
+            language,
+            enemies,
+        } = this.props;
+
+
+        const tip = translate('DEVTOOLS_TIP', language);
         return(
             <div className="tutorial-container">
                 <Logo />
                 <Tip text={tip} />
                 <div className="dummies-container">
-                    { this.createDummies() }
+                    {
+                        enemies.map((status, i) => {
+                            return <Dummie key={i} number={i} complete={status} />;
+                        })
+                    }
                 </div>
                 <div className="knight"></div>
             </div>
@@ -56,6 +56,7 @@ class Tutorial extends Component {
 
 const selector = createStructuredSelector({
     language,
+    enemies,
 });
 
 export default connect(selector)(Tutorial);
