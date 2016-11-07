@@ -78,9 +78,7 @@ function objectTask(position) {
 
         setGameInfo(position, check);
 
-        return {
-            className: GeneratedClass
-        }
+        return GeneratedClass;
     }
 
 }
