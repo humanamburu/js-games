@@ -1,16 +1,15 @@
 import './_tutorial.styl';
-
 import { Component } from 'react';
-import translate from 'utils/translator';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 //components
-import Dummie from 'components/dummie';
-import Logo from 'components/logo';
-import Tip from 'components/tip';
+import Dummie from 'components/level_components/dummie';
+import Logo from 'components/level_components/logo';
+import Tip from 'components/level_components/tip';
 
 //game
+import translate from 'utils/translator';
 import tutorialScenario from 'scenarios/tutorial';
 import applyScenario from 'game_core/apply_scenario';
 import { setDummies } from 'action_creators/tutorial';
@@ -39,7 +38,7 @@ class Tutorial extends Component {
         const tip = translate('DEVTOOLS_TIP', language);
         return(
             <div className="tutorial-container">
-                <Logo />
+                <Logo level={'Tutorial'} />
                 <Tip text={tip} />
                 <div className="dummies-container">
                     {
@@ -60,4 +59,3 @@ const selector = createStructuredSelector({
 });
 
 export default connect(selector)(Tutorial);
-

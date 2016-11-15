@@ -1,12 +1,12 @@
 import './_default.styl';
 import React from 'react';
 import { render } from 'react-dom';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import store from 'store';
 import immutable from 'immutable';
 import installDevTools from 'immutable-devtools';
 import lodash from 'lodash';
+import getRoutes from './routes';
 
 if (process.env.NODE_ENV !== 'production') {
     window.store = store;
@@ -17,12 +17,9 @@ if (process.env.NODE_ENV !== 'production') {
 //Needed for React Developer Tools
 window.React = React;
 
-//TODO: add menu and routing
-import Tutorial from './components/levels/tutorial';
-
 render(
     <Provider store={store}>
-        <Tutorial />
+        { getRoutes() }
     </Provider>,
     document.getElementById('react-main-app')
 );

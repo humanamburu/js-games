@@ -1,24 +1,20 @@
-var Webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var path = require('path');
+const Webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 //plugins
-var plugins = [];
-var htmlPlugin = new HtmlWebpackPlugin({
-    title: 'JS Games',
+const plugins = [];
+const htmlPlugin = new HtmlWebpackPlugin({
+    title: 'Web Knight',
     template: './client/src/index.template.pug'
 });
-var defineProcessPlugin = new Webpack.DefinePlugin({
+const defineProcessPlugin = new Webpack.DefinePlugin({
     'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV || '')
     }
 });
-var uglifyPlugin = new Webpack.optimize.UglifyJsPlugin({
+const uglifyPlugin = new Webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false }
 });
-
-function isProduction() {
-    return process.env.NODE_ENV === 'production';
-}
 
 plugins.push(htmlPlugin);
 plugins.push(defineProcessPlugin);
