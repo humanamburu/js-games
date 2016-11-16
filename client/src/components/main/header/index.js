@@ -10,8 +10,9 @@ export default class Header extends PureComponent{
                     <a className="nav-logo-wrapper" href="/">
                         <h1 className="nav-logo">{title}</h1>
                     </a>
-                    <div><a className="btn btn-nav" href="/register">Register</a><a
-                        className="btn btn-nav" href="/login">Login</a>
+                    <div>
+                        <a className="btn btn-nav" href="/register">Register</a>
+                        <a className="btn btn-nav" href="/login">Login</a>
                     </div>
                 </div>
             </div>

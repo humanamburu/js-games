@@ -16,7 +16,7 @@ class Index extends Component {
                     <article>
                         <div>
                             <section className="text-section">
-                                <h1>Welcome to Web Knight!</h1>
+                                <h1>Welcome!</h1>
                                 <p>
                                     <span>This application demonstrates what a React.js based register/login workflow might look like on the Frontend. I used </span>
                                     <a href="https://github.com/mxstbr/react-boilerplate">react-boilerplate</a>
@@ -33,7 +33,7 @@ class Index extends Component {
                                 <ul>
                                     <li>
                                         <p>
-                                            <span>Using</span><a href="https://github.com/gaearon/react-hot-loader"><strong >react-hot-loader</strong></a>
+                                            <span>Using </span><a href="https://github.com/gaearon/react-hot-loader"><strong >react-hot-loader</strong></a>
                                             <span>, your changes in the CSS and JS get reflected in the app instantly without refreshing the page. That means that the </span>
                                             <strong>currentapplication statepersists</strong><span > even when you change something in the underlying code! For a very good explanation and demo watch Dan Abramov himself </span>
                                             <a href="https://www.youtube.com/watch?v=xsSnOQynTHs">talking about it atreact-europe</a><span>.</span>
