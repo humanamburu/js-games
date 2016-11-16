@@ -2,11 +2,14 @@
   "name": "web-knight",
   "version": "0.1.0",
   "description": "Game for students studying JS and Chrome devtools",
+  "engines": {
+    "node": "6.9.1"
+  },
   "scripts": {
     "watch": "cross-env NODE_ENV=development webpack --config webpack.config.js",
     "build-prod": "cross-env NODE_ENV=production webpack --config webpack.config.js --progress --colors --display-error-details --bail",
-    "start-prod": "npm run build-prod && node ./server/index.js",
-    "start": "node ./server/index.js",
+    "start": "npm run build-prod && node ./server/index.js",
+    "server": "node ./server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "humanamburu",
