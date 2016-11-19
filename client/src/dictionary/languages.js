@@ -1,4 +1,4 @@
-const languages = ['eng', 'ru'];
+const languages = ['ru', 'eng'];
 let selected = 0;
 
 

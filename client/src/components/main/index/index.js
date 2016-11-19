@@ -2,42 +2,50 @@ import './_index.styl';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import translate from 'utils/translator';
 
 //selectors
 import { language } from 'selectors/game_selectors';
 
 //components
 import Header from 'components/main/header';
+import { Link } from 'react-router';
 
 //todo: refactor
 class Index extends Component {
     render() {
+        const { language } = this.props;
         return (
             <div className="index-wrapper">
                 <div className="wrapper">
-                    <Header title={"Web Knight"} language={this.props.language}/>
+                    <Header title={"Web Knight"} language={language}/>
                     <article>
                         <div>
                             <section className="text-section">
-                                <h1>Welcome!</h1>
+                                <h1>{translate('INDEX_WELCOME', language)}</h1>
                                 <p>
-                                    <span>This application demonstrates what a React.js based register/login workflow might look like on the Frontend. I used </span>
-                                    <a href="https://github.com/mxstbr/react-boilerplate">react-boilerplate</a>
-                                    <span> as a starting point — the app thus uses Redux, PostCSS, react-router, ServiceWorker, AppCache, bcrypt and lots more. See the full source code on </span>
+                                    {translate('INDEX_TEXT', language)}
                                 </p>
-                                <div>
-                                    <a className="btn" href="/login">Login</a>
-                                    <a className="btn" href="/register">Register</a>
-                                    <a className="btn" href="/tutorial">Tutorial</a>
+                                <div className="main-buttons">
+                                    <Link className="btn" to="/login">{translate('LOGIN', language)}</Link>
+                                    <Link className="btn" to="/register">{translate('REGISTER', language)}</Link>
+                                    <Link className="btn" to="/tutorial">Tutorial</Link>
                                 </div>
                             </section>
                             <section className="text-section">
-                                <h2>Features</h2>
+                                <h2>{translate('FEATURES', language)}</h2>
                                 <ul>
                                     <li>
-                                        <p>
-                                           ываыва
-                                        </p>
+                                        <div>
+                                            {translate('INDEX_LAND_DEVTOOLS', language)}
+                                            <div className="pic pic-devtools"></div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            {translate('INDEX_LAND_GAME', language)}
+                                            <div className="pic pic-game"></div>
+                                        </div>
                                     </li>
                                 </ul>
                             </section>

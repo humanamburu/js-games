@@ -7,6 +7,11 @@
  *
  */
 export default {
+    INDEX_WELCOME: 'Welcome!',
+    INDEX_TEXT: '{}',
+    REGISTER: 'Register',
+    LOGIN: 'Login',
+
     DEVTOOLS_TIP: 'Press the F12 on your keyboard to open the dev tools!',
     WELCOME: 'Welcome to the JS Game! This tutorial will help you with game basics.\n\nPlease type help() to show additional info.',
     TUTORIAL_HELP: 'So, JS Game has a public API (application programming interface), you can find it at the game object ' +
