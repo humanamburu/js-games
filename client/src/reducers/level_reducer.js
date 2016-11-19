@@ -2,7 +2,7 @@ import immutable from 'immutable';
 import ActionTypes from 'action_types/level';
 
 const initialState = immutable.fromJS({
-    complete: 0,
+    position: 0,
     info: {},
     enemies: [],
 });
@@ -21,7 +21,10 @@ export default function levelReducer(state = initialState, action = {}) {
         case ActionTypes.UPDATE_ENEMY_STATUS:
             const { number, status } = action.payload;
 
-            return state.setIn(['enemies', number], status);
+            return state.withMutations((mutable) => {
+                mutable.setIn(['enemies', number], status);
+                mutable.setIn(['position'], number + 1);
+            });
 
         default:
             return state;

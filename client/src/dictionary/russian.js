@@ -22,13 +22,13 @@ export default {
     WELCOME: 'Добро пожаловать в JS Games! Напиши help() в консоли что бы узнать подробности.',
     TUTORIAL_HELP: 'Ты можешь взаимодействовать с игрой только через консоль. Для этого нужно испоьзовать предложеный API' +
     '(application programming interface).',
-    TUTORIAL_HELP_ANSWER: 'API для игры очень простое:\n {\n' +
-    '    game.getTaskInfo(n) - получить информацию о задании, где n - номер задания,\n' +
-    '    game.getTask(n) - получить условие задания, где n - номер задания,\n' +
-    '    game.answerFor(n, answer) - проверить задание n, с ответом answer\n}\n' +
-    'Что бы получить свое первое задание напиши в консоли: game.getTaskInfo(0);',
-    TUTORIAL_TASK_0: 'С помощью game.getTask(0) получи объект с полями:\n{\n    array: [Массив из двух чисел],\n    operation: "Арифметическая операция"\n}\n' +
-    'Выполни арифметическую операцию и результат отправь в game.answerFor(0, твой ответ)',
-    TUTORIAL_TASK_1: 'Создай объект класса из game.getTask(1)',
+    TUTORIAL_HELP_ANSWER: 'API для игры очень прост:\n {\n' +
+    '    game.getTaskInfo() - получить информацию о задании,\n' +
+    '    game.getTask() - получить условие задания,\n' +
+    '    game.answer(answer) - проверить задание, где answer - ответ\n}\n' +
+    'Что бы получить свое первое задание напиши в консоли: game.getTaskInfo();',
+    TUTORIAL_TASK_0: 'С помощью game.getTask() получи объект с полями:\n{\n    array: [Массив из двух чисел],\n    operation: "Арифметическая операция"\n}\n' +
+    'Выполни арифметическую операцию c элементами массива и результат отправь в game.answer(твой ответ)',
+    TUTORIAL_TASK_1: 'Создай объект класса который тебе вернет game.getTask()',
     TUTORIAL_TASK_2: 'Воспользуйся chrome-devtools и найди DOM element рыцаря. data-answer будет являтся ответом.',
 }

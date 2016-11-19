@@ -3,28 +3,35 @@ import store from 'store';
 import create from 'scenarios/create_scenario';
 import { randomInteger } from 'utils/random';
 import { setGameInfo, updateDummieStatus } from 'action_creators/tutorial';
-import { info } from 'selectors/level_selectors';
+import { info, position as getPosition } from 'selectors/level_selectors';
+import { language } from 'selectors/game_selectors';
+import translate from 'utils/translator';
+//todo: refactor
+const tasksArray = [arithmeticTask, objectTask, devtoolsTask];
 
 export default create('TUTORIAL', {
     //todo: common api
-    getTask: function (number) {
-        const tasksArray = [arithmeticTask, objectTask, devtoolsTask];
+    getTask: function () {
+        const state = store.getState();
+        const position = getPosition(state);
         let tasks = [];
 
         for (let i = 0; i < tasksArray.length; i++) {
             tasks.push(tasksArray[i](i));
         }
 
-        if (tasks[number]) {
-            return tasks[number]();
+        if (tasks[position]) {
+            return tasks[position]();
         }
 
-        throw Error('Task number is wrong! Please, check the API.');
+        throw Error('Task number is wrong!');
     },
 
-    answerFor: function (number, answer) {
-        const levelInfo = info(store.getState());
-        const storedAnswer = levelInfo.get(`${number}`);
+    answer: function (answer) {
+        const state = store.getState();
+        const levelInfo = info(state);
+        const position = getPosition(state);
+        const storedAnswer = levelInfo.get(`${position}`);
         let result;
 
         if (_.isFunction(storedAnswer)) {
@@ -34,9 +41,12 @@ export default create('TUTORIAL', {
         }
 
         if (!_.isUndefined(storedAnswer) && result) {
-            updateDummieStatus(number, true);
-
-            return true;
+            updateDummieStatus(position, true);
+            if (position + 1 === tasksArray.length) {
+                console.info('Congrats! You are winner!');
+            } else {
+                return true;
+            }
         }
 
         return false;
@@ -89,6 +99,6 @@ function devtoolsTask(position) {
     setGameInfo(position, answer);
 
     return function () {
-        return 'find the knight in DOM!'
+        return translate(`TUTORIAL_TASK_${position}`, language(store.getState()));
     }
 }

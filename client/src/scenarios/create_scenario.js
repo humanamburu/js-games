@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import { activeLanguageTranslation } from 'utils/translator';
+import { position as getPosition } from 'selectors/level_selectors';
 /**
  * Create scenario function
  *
@@ -10,7 +11,12 @@ import { activeLanguageTranslation } from 'utils/translator';
  */
 export default function createScenario(name, gameConfig) {
     const defaultGameConfig = {
-        getTaskInfo: function (taskName) { return activeLanguageTranslation(`${name}_TASK_${taskName}`) }
+        getTaskInfo: function () {
+            const state = store.getState();
+            const position = getPosition(state);
+
+            return activeLanguageTranslation(`${name}_TASK_${position}`);
+        }
     };
 
     return {

@@ -2,8 +2,8 @@ export function info(state) {
     return state.getIn(['level', 'info']);
 }
 
-export function complete(state) {
-    return state.get(['level', 'complete']);
+export function position(state) {
+    return state.getIn(['level', 'position']);
 }
 
 export function enemies(state) {
