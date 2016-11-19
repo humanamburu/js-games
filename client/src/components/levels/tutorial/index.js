@@ -39,7 +39,7 @@ class Tutorial extends Component {
         return(
             <div className="tutorial-container">
                 <Logo level={'Tutorial'} />
-                <Tip text={tip} />
+                <Tip text={tip} lang={language} />
                 <div className="dummies-container">
                     {
                         enemies.map((status, i) => {
