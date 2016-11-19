@@ -1,3 +1,3 @@
 export default {
-    CHANGE_LANGUAGE: 'CG_LANG',
+    TOGGLE_LANGUAGE: 'CG_LANG',
 }
