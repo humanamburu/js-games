@@ -24,7 +24,7 @@ export function setDummiesAction() {
 }
 export const setDummies = bindActionCreators(setDummiesAction, store.dispatch);
 
-export function updateDummieStatusAction(number, status) {
+export function updateEnemyStatusActionCreator(number, status) {
     return {
         type: ActionTypes.UPDATE_ENEMY_STATUS,
         payload: {
@@ -34,4 +34,4 @@ export function updateDummieStatusAction(number, status) {
     }
 }
 
-export const updateDummieStatus = bindActionCreators(updateDummieStatusAction, store.dispatch);
+export const updateEnemyStatusAction = bindActionCreators(updateEnemyStatusActionCreator, store.dispatch);
