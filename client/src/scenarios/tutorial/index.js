@@ -1,7 +1,7 @@
 import store from 'store';
 import create from 'scenarios/create_scenario';
 import { randomInteger } from 'utils/random';
-import { setGameInfo, updateEnemyStatusAction } from 'action_creators/tutorial';
+import { setGameInfo, updateEnemyStatusAction } from 'action_creators/common';
 import { language } from 'selectors/game_selectors';
 import translate from 'utils/translator';
 

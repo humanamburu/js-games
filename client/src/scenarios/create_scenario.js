@@ -2,7 +2,7 @@ import _ from 'lodash';
 import store from 'store';
 import { activeLanguageTranslation } from 'utils/translator';
 import { position as getPosition } from 'selectors/level_selectors';
-import { updateEnemyStatusAction } from 'action_creators/tutorial';
+import { updateEnemyStatusAction } from 'action_creators/common';
 import { info } from 'selectors/level_selectors';
 /**
  * Create scenario function
@@ -60,7 +60,7 @@ function answer(array, answer) {
     if (!_.isUndefined(storedAnswer) && result) {
         updateEnemyStatusAction(position, true);
         if (position + 1 === array.length) {
-            console.info('Congrats! You are winner!');
+            return console.info('Congrats! You are winner!');
         } else {
             return true;
         }

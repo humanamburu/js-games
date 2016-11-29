@@ -2,8 +2,7 @@ import ActionTypes from 'action_types/level';
 import { bindActionCreators } from 'redux';
 import store from 'store';
 
-//TODO: refactor to common api
-export function gameInfoAction(name, info) {
+export function gameInfoActionCreator(name, info) {
     const action = {
         type: ActionTypes.SET_LEVEL_INFO,
         payload: {},
@@ -13,16 +12,13 @@ export function gameInfoAction(name, info) {
 
     return action;
 }
-
-export const setGameInfo = bindActionCreators(gameInfoAction, store.dispatch);
-
-export function setDummiesAction() {
+//todo: refactor
+export function setDummiesActionCreator() {
     return {
         type: ActionTypes.SET_ENEMIES,
         payload: [false, false, false],
     };
 }
-export const setDummies = bindActionCreators(setDummiesAction, store.dispatch);
 
 export function updateEnemyStatusActionCreator(number, status) {
     return {
@@ -35,3 +31,5 @@ export function updateEnemyStatusActionCreator(number, status) {
 }
 
 export const updateEnemyStatusAction = bindActionCreators(updateEnemyStatusActionCreator, store.dispatch);
+export const setDummies = bindActionCreators(setDummiesActionCreator, store.dispatch);
+export const setGameInfo = bindActionCreators(gameInfoActionCreator, store.dispatch);

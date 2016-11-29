@@ -12,7 +12,7 @@ import Tip from 'components/level_components/tip';
 import translate from 'utils/translator';
 import tutorialScenario from 'scenarios/tutorial';
 import applyScenario from 'game_core/apply_scenario';
-import { setDummies } from 'action_creators/tutorial';
+import { setDummies } from 'action_creators/common';
 
 //selectors
 import { language } from 'selectors/game_selectors';
