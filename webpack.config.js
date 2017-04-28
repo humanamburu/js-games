@@ -1,69 +1,85 @@
-const Webpack = require('webpack');
+const { DefinePlugin, LoaderOptionsPlugin, optimize } = require('webpack');
+const WebpackNotifierPlugin = require('webpack-notifier');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-//plugins
-const plugins = [];
-const htmlPlugin = new HtmlWebpackPlugin({
-    title: 'Web Knight',
-    template: './client/src/index.template.pug'
-});
-const defineProcessPlugin = new Webpack.DefinePlugin({
-    'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV || '')
-    }
-});
-const uglifyPlugin = new Webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false }
-});
 
-plugins.push(htmlPlugin);
-plugins.push(defineProcessPlugin);
-if (isProduction()) {
-    plugins.push(uglifyPlugin);
-}
+const nodeEnv = process.env.NODE_ENV || '';
+const isProduction = nodeEnv === 'production';
 
-function isProduction() {
-    return process.env.NODE_ENV === 'production';
-}
+const prodPlugins = [
+    new LoaderOptionsPlugin({
+        minimize: true,
+        debug: false
+    }),
+    new optimize.UglifyJsPlugin({
+        beautify: false,
+        mangle: {
+            screw_ie8: true,
+            keep_fnames: true
+        },
+        compress: {
+            screw_ie8: true
+        },
+        comments: false
+    }),
+];
+
+const plugins = [
+    new WebpackNotifierPlugin(),
+    new HtmlWebpackPlugin({
+        filename: 'index.html',
+        template: 'client/src/index.html',
+        chunks: ['application']
+    }),
+    new DefinePlugin({
+        'process.env': {
+            NODE_ENV: JSON.stringify(nodeEnv || '')
+        }
+    }),
+];
 
 module.exports = {
-    entry: "./client/src/index",
-    output: {
-        path: __dirname + '/client/dist',
-        filename: "scripts/scripts.bundle.js"
+    entry: {
+        'application': './client/src/index.jsx',
     },
-    devtool: isProduction() ? '' : 'source-map',
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].bundle.js',
+    },
     resolve: {
-        root: path.join(__dirname, 'client/src/'),
+        extensions: ['.js', '.jsx']
     },
     module: {
-        loaders: [
+        rules: [
             {
-                test: /\.js?$/,
-                exclude: /(node_modules|bower_components)/,
-                loader: 'babel',
+                test: /.jsx?$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
                 query: {
-                    presets: ['react', 'es2015']
+                    presets: ['react']
                 }
             },
             {
-                test: /\.styl$/,
-                loader: 'style-loader!css-loader!stylus-loader?resolve url'
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                ]
             },
             {
-                test: /\.pug$/,
-                loader: 'pug'
+                test: /\.styl?$/,
+                include: [
+                    path.resolve(__dirname, 'src'),
+                ],
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'resolve-url-loader',
+                    'stylus-loader',
+                ]
             },
-            {
-                test: /\.png$/,
-                loaders: ['url-loader?limit=150000']
-            },
-            {
-                test: /\.gif$/,
-                loaders: ['url-loader?limit=150000']
-            }
         ]
     },
-    watch: !isProduction(),
-    plugins: plugins
+    devtool: isProduction ? '' : 'eval-source-map',
+    plugins: isProduction ? prodPlugins.concat(plugins) : plugins,
 };
