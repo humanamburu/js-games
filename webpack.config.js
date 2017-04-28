@@ -47,7 +47,8 @@ module.exports = {
         filename: '[name].bundle.js',
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx'],
+        modules: [ path.resolve(`${__dirname}/client/src/`), 'node_modules']
     },
     module: {
         rules: [
@@ -80,6 +81,6 @@ module.exports = {
             },
         ]
     },
-    devtool: isProduction ? '' : 'eval-source-map',
+    devtool: isProduction ? '' : 'source-map',
     plugins: isProduction ? prodPlugins.concat(plugins) : plugins,
 };
