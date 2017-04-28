@@ -3,7 +3,7 @@ const path = require('path');
 const port = process.env.PORT || 8080;
 const app = express();
 
-const staticPath = path.resolve('server/static/');
+const staticPath = path.resolve(`${__dirname}/static/`);
 const appStatic = express.static(staticPath);
 
 app.use(appStatic);

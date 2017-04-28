@@ -28,7 +28,7 @@ const plugins = [
     new WebpackNotifierPlugin(),
     new HtmlWebpackPlugin({
         filename: 'index.html',
-        template: 'client/src/index.html',
+        template: 'client/index.html',
         chunks: ['application']
     }),
     new DefinePlugin({
@@ -40,10 +40,10 @@ const plugins = [
 
 module.exports = {
     entry: {
-        'application': './client/src/index.jsx',
+        'application': './client/index.jsx',
     },
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(`${__dirname}/server/static/`),
         filename: '[name].bundle.js',
     },
     resolve: {
