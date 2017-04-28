@@ -1,7 +1,8 @@
+const path = require('path');
 const { DefinePlugin, LoaderOptionsPlugin, optimize } = require('webpack');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const nodeEnv = process.env.NODE_ENV || '';
 const isProduction = nodeEnv === 'production';
@@ -34,6 +35,25 @@ const plugins = [
     new DefinePlugin({
         'process.env': {
             NODE_ENV: JSON.stringify(nodeEnv || '')
+        }
+    }),
+    new FaviconsWebpackPlugin({
+        logo: './client/src/assets/icon.png',
+        persistentCache: true,
+        inject: true,
+        background: '#fff',
+        title: 'WebKnight',
+        icons: {
+            android: true,
+            appleIcon: true,
+            appleStartup: true,
+            coast: false,
+            favicons: true,
+            firefox: true,
+            opengraph: false,
+            twitter: false,
+            yandex: false,
+            windows: false
         }
     }),
 ];
@@ -69,14 +89,17 @@ module.exports = {
             },
             {
                 test: /\.styl?$/,
-                include: [
-                    path.resolve(__dirname, 'src'),
-                ],
                 use: [
                     'style-loader',
                     'css-loader',
                     'resolve-url-loader',
                     'stylus-loader',
+                ]
+            },
+            {
+                test: /\.png?$/,
+                use: [
+                    'file-loader?name=[name].[ext]',
                 ]
             },
         ]
