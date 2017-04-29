@@ -1,69 +1,109 @@
-const Webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-//plugins
-const plugins = [];
-const htmlPlugin = new HtmlWebpackPlugin({
-    title: 'Web Knight',
-    template: './client/src/index.template.pug'
-});
-const defineProcessPlugin = new Webpack.DefinePlugin({
-    'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV || '')
-    }
-});
-const uglifyPlugin = new Webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false }
-});
+const { DefinePlugin, LoaderOptionsPlugin, optimize } = require('webpack');
+const WebpackNotifierPlugin = require('webpack-notifier');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
-plugins.push(htmlPlugin);
-plugins.push(defineProcessPlugin);
-if (isProduction()) {
-    plugins.push(uglifyPlugin);
-}
+const nodeEnv = process.env.NODE_ENV || '';
+const isProduction = nodeEnv === 'production';
 
-function isProduction() {
-    return process.env.NODE_ENV === 'production';
-}
+const prodPlugins = [
+    new LoaderOptionsPlugin({
+        minimize: true,
+        debug: false
+    }),
+    new optimize.UglifyJsPlugin({
+        beautify: false,
+        mangle: {
+            screw_ie8: true,
+            keep_fnames: true
+        },
+        compress: {
+            screw_ie8: true
+        },
+        comments: false
+    }),
+];
+
+const plugins = [
+    new WebpackNotifierPlugin(),
+    new HtmlWebpackPlugin({
+        filename: 'index.html',
+        template: 'client/index.html',
+        chunks: ['application']
+    }),
+    new DefinePlugin({
+        'process.env': {
+            NODE_ENV: JSON.stringify(nodeEnv || '')
+        }
+    }),
+    new FaviconsWebpackPlugin({
+        logo: './client/src/assets/icon.png',
+        persistentCache: true,
+        inject: true,
+        background: '#fff',
+        title: 'WebKnight',
+        icons: {
+            android: true,
+            appleIcon: true,
+            appleStartup: true,
+            coast: false,
+            favicons: true,
+            firefox: true,
+            opengraph: false,
+            twitter: false,
+            yandex: false,
+            windows: false
+        }
+    }),
+];
 
 module.exports = {
-    entry: "./client/src/index",
-    output: {
-        path: __dirname + '/client/dist',
-        filename: "scripts/scripts.bundle.js"
+    entry: {
+        'application': './client/index.jsx',
     },
-    devtool: isProduction() ? '' : 'source-map',
+    output: {
+        path: path.resolve(`${__dirname}/server/static/`),
+        filename: '[name].bundle.js',
+    },
     resolve: {
-        root: path.join(__dirname, 'client/src/'),
+        extensions: ['.js', '.jsx'],
+        modules: [ path.resolve(`${__dirname}/client/src/`), 'node_modules']
     },
     module: {
-        loaders: [
+        rules: [
             {
-                test: /\.js?$/,
-                exclude: /(node_modules|bower_components)/,
-                loader: 'babel',
+                test: /.jsx?$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
                 query: {
-                    presets: ['react', 'es2015']
+                    presets: ['react']
                 }
             },
             {
-                test: /\.styl$/,
-                loader: 'style-loader!css-loader!stylus-loader?resolve url'
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                ]
             },
             {
-                test: /\.pug$/,
-                loader: 'pug'
+                test: /\.styl?$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'resolve-url-loader',
+                    'stylus-loader',
+                ]
             },
             {
-                test: /\.png$/,
-                loaders: ['url-loader?limit=150000']
+                test: /\.png?$/,
+                use: [
+                    'file-loader?name=[name].[ext]',
+                ]
             },
-            {
-                test: /\.gif$/,
-                loaders: ['url-loader?limit=150000']
-            }
         ]
     },
-    watch: !isProduction(),
-    plugins: plugins
+    devtool: isProduction ? '' : 'source-map',
+    plugins: isProduction ? prodPlugins.concat(plugins) : plugins,
 };
