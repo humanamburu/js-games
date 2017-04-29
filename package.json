@@ -9,7 +9,7 @@
     "watch": "cross-env NODE_ENV=development webpack --watch",
     "build": "cross-env NODE_ENV=production webpack",
     "server": "cross-env NODE_PATH=./ node ./server/index.js",
-    "dev-server": "cross-env NODE_PATH=./ nodemon --inspect ./server/index.js"
+    "dev-server": "cross-env NODE_PATH=./ nodemon ./server/index.js"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
