@@ -37,25 +37,25 @@ const plugins = [
             NODE_ENV: JSON.stringify(nodeEnv || '')
         }
     }),
-    new FaviconsWebpackPlugin({
-        logo: './client/src/assets/icon.png',
-        persistentCache: true,
-        inject: true,
-        background: '#fff',
-        title: 'WebKnight',
-        icons: {
-            android: true,
-            appleIcon: true,
-            appleStartup: true,
-            coast: false,
-            favicons: true,
-            firefox: true,
-            opengraph: false,
-            twitter: false,
-            yandex: false,
-            windows: false
-        }
-    }),
+    // new FaviconsWebpackPlugin({
+    //     logo: './client/src/assets/icon.png',
+    //     persistentCache: true,
+    //     inject: true,
+    //     background: '#fff',
+    //     title: 'WebKnight',
+    //     icons: {
+    //         android: true,
+    //         appleIcon: true,
+    //         appleStartup: true,
+    //         coast: false,
+    //         favicons: true,
+    //         firefox: true,
+    //         opengraph: false,
+    //         twitter: false,
+    //         yandex: false,
+    //         windows: false
+    //     }
+    //}),
 ];
 
 module.exports = {
@@ -88,12 +88,12 @@ module.exports = {
                 ]
             },
             {
-                test: /\.styl?$/,
+                test: /\.scss?$/,
                 use: [
                     'style-loader',
                     'css-loader',
                     'resolve-url-loader',
-                    'stylus-loader',
+                    'sass-loader',
                 ]
             },
             {

@@ -2,7 +2,7 @@ import * as Actions from 'actions/user';
 import Immutable from 'immutable';
 
 const initial = Immutable.fromJS({
-    name: null,
+    name: 'Student',
 });
 
 export default function userReducer(state = initial, action = {}) {

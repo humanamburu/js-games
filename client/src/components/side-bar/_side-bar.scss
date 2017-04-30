@@ -1,0 +1,29 @@
+.ant-layout-sider {
+  height: 100vh;
+  overflow: auto;
+
+  .logo {
+    height: 32px;
+    color: white;
+    margin: 10px;
+    font-size: 20px;
+    text-align: center;
+    overflow: hidden;
+  }
+}
+
+.ant-layout-sider-collapsed {
+  .anticon {
+    font-size: 16px;
+    margin-left: 8px;
+  }
+
+  .nav-text {
+    display: none;
+  }
+
+  .ant-menu-submenu-vertical > .ant-menu-submenu-title:after {
+    display: none;
+  }
+}
+

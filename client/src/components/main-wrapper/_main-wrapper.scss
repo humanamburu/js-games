@@ -1,0 +1,53 @@
+.container {
+  flex-direction: row;
+
+  .ant-layout-header {
+    background: #fff;
+    padding: 0;
+  }
+
+  .content {
+    margin: 20px 16px;
+
+    &.ant-layout-content {
+      overflow: visible;
+    }
+
+    .list {
+      padding: 25px 60px;
+      background: #fff;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+
+    .ant-breadcrumb {
+      font-size: 14px;
+      margin-left: 40px;
+    }
+  }
+}
+
+.social {
+  display: flex;
+  justify-content: flex-end;
+
+  .item {
+    font-size: 14px;
+    margin-right: 20px;
+  }
+
+  span {
+    padding: 5px;
+  }
+}
+
+.scrollable {
+  overflow: auto;
+  height: 100vh;
+}

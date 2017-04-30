@@ -1,4 +1,4 @@
-import './_side-bar.styl';
+import './_side-bar.scss';
 
 import React from 'react';
 import { Layout, Menu, Icon } from 'antd';

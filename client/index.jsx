@@ -1,5 +1,5 @@
 import 'antd/dist/antd.css';
-import './_default.styl';
+import './_default.scss';
 
 import React from 'react';
 import { render } from 'react-dom';

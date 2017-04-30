@@ -1,0 +1,82 @@
+html, body {
+  overflow: hidden;
+}
+
+.ant-carousel .slick-dots {
+  position: absolute;
+  bottom: 0;
+  list-style: none;
+  display: block;
+  text-align: center;
+  padding: 0;
+  width: 100%;
+}
+
+.ant-carousel .slick-dots li {
+  position: relative;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  margin: 0 5px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.ant-carousel .slick-slide {
+  text-align: center;
+  min-height: 400px;
+  line-height: 100px;
+  background: #71B5DE;
+  color: #fff;
+  overflow: hidden;
+}
+
+.ant-carousel .slick-dots li button {
+  border: 0;
+  background: transparent;
+  display: block;
+  height: 20px;
+  width: 20px;
+  outline: none;
+  line-height: 0;
+  font-size: 0;
+  color: transparent;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.ant-carousel .slick-dots li button:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "\2022";
+  width: 20px;
+  height: 20px;
+  font-size: 18px;
+  font-family: arial,sans-serif;
+  line-height: 20px;
+  text-align: center;
+  color: gray;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ant-carousel .slick-dots li.slick-active button:before {
+  color: #000;
+  opacity: .75;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.69);
+}
