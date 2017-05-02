@@ -24,9 +24,9 @@ export default class SideBar extends React.Component {
     }
 
     mapButtons(array) {
-        return array.map(({ key, icon, title, href }) => {
+        return array.map(({ icon, title, href }) => {
             return (
-                <Menu.Item key={key}>
+                <Menu.Item key={href}>
                     <Link to={href}>
                         <Icon type={icon}/>
                         <span className="nav-text">{title}</span>

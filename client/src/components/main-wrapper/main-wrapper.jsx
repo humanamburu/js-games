@@ -2,23 +2,36 @@ import './_main-wrapper.scss';
 
 import React from 'react';
 import { Layout, Icon, Breadcrumb } from 'antd';
+import { connect } from 'react-redux';
 
 import SideBar from 'components/side-bar/side-bar';
 import sideBarButtons from './buttons';
 
 const { Header, Content } = Layout;
 
-export default class MainWrapper extends React.Component {
+class MainWrapper extends React.Component {
+    parseBreadcrumbs() {
+        const breadcrumbs = this.props.location.split('/');
+
+        return (
+            <Breadcrumb>
+                {
+                    breadcrumbs.map((location, index) => {
+                        let text = !location && index ? 'index' : 'Home';
+
+                        return <Breadcrumb.Item>{location || text}</Breadcrumb.Item>
+                    })
+                }
+            </Breadcrumb>
+        )
+    }
     render() {
         return (
             <Layout className="container">
-                <SideBar buttons={sideBarButtons} selected={'main'}/>
+                <SideBar buttons={sideBarButtons} selected={this.props.location}/>
                 <Layout className="scrollable">
                     <Header className="header">
-                        <Breadcrumb>
-                            <Breadcrumb.Item>Home</Breadcrumb.Item>
-                            <Breadcrumb.Item>Main</Breadcrumb.Item>
-                        </Breadcrumb>
+                        {this.parseBreadcrumbs()}
                         <div className="social">
                             <a className="item" href="https://github.com/humanamburu/web-knight">
                                 <Icon type="star-o"/>
@@ -44,3 +57,11 @@ export default class MainWrapper extends React.Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        location: state.get('router').location.pathname,
+    }
+};
+
+export default connect(mapStateToProps)(MainWrapper);

@@ -8,18 +8,21 @@
   "scripts": {
     "watch": "cross-env NODE_ENV=development webpack --watch",
     "build": "cross-env NODE_ENV=production webpack",
-    "server": "cross-env NODE_PATH=./ node ./server/index.js",
-    "dev-server": "cross-env NODE_PATH=./ nodemon ./server/index.js"
+    "server": "cross-env NODE_PATH=./ node --ignore './client/*.js' ./server/index.js",
+    "dev-server": "cross-env NODE_PATH=./ nodemon --ignore './client/*.js' ./server/index.js"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
+    "babel-plugin-import": "^1.1.1",
     "babel-preset-react": "^6.24.1",
     "cross-env": "^4.0.0",
     "css-loader": "^0.28.0",
     "favicons-webpack-plugin": "^0.0.7",
     "file-loader": "^0.11.1",
     "html-webpack-plugin": "^2.28.0",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.3",
     "node-sass": "^4.5.2",
     "nodemon": "^1.11.0",
     "resolve-url-loader": "^2.0.2",
@@ -37,6 +40,7 @@
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
     "react-router-dom": "^4.1.1",
+    "react-router-redux": "next",
     "redux": "^3.6.0",
     "redux-actions": "^2.0.2",
     "redux-immutable": "^4.0.0"

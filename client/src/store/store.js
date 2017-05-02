@@ -1,5 +1,9 @@
+import { routerMiddleware } from 'react-router-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import reducers from 'reducers/reducers';
+import history from './history';
+
+const middleware = routerMiddleware(history);
 
 let composeEnhancers;
 
@@ -8,4 +12,4 @@ if (process.env.NODE_ENV !== 'production') {
     composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 }
 
-export default composeEnhancers(applyMiddleware())(createStore)(reducers);
+export default composeEnhancers(applyMiddleware(middleware))(createStore)(reducers);

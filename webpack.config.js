@@ -97,6 +97,15 @@ module.exports = {
                 ]
             },
             {
+                test: /\.less?$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'resolve-url-loader',
+                    'less-loader',
+                ]
+            },
+            {
                 test: /\.png?$/,
                 use: [
                     'file-loader?name=[name].[ext]',
