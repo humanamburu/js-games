@@ -38,20 +38,20 @@ export default class Game extends React.Component {
                     <Col span={10}>
                         <Timeline>
                             <Timeline.Item color="green">
-                                <h4>Task #1</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consectet</p>
+                                <h4>Easy arithmetic #1</h4>
+                                <p>Perform math operation for array</p>
                             </Timeline.Item>
                             <Timeline.Item>
-                                <h4>Task #2</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consectet</p>
+                                <h4>Plane object #2</h4>
+                                <p>Create a plane Object with required fields</p>
                             </Timeline.Item>
                             <Timeline.Item>
-                                <h4>Task #3</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consectet</p>
+                                <h4>Odds array #3</h4>
+                                <p>Generate ods array</p>
                             </Timeline.Item>
                             <Timeline.Item>
-                                <h4>Task #4</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consectet</p>
+                                <h4>Odds generator #4</h4>
+                                <p>Create a special odd-generator function</p>
                             </Timeline.Item>
                         </Timeline>
                     </Col>
@@ -78,7 +78,7 @@ export default class Game extends React.Component {
                     </Col>
                 </Row>
                 <Row>
-                    <Alert message="Tip: lorem ipsum hello wirld coffec and sigars with sugar press f12" type="warning" />
+                    <Alert message="Tip: Press the F12 on your keyboard to open the dev tools and start hacking!" />
                     <Button.Group className="navigation">
                         <Button type="primary">
                             <Icon type="left" />Go back
