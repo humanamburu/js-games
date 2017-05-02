@@ -6,12 +6,15 @@
   text-align: center;
 
   .ant-carousel {
-    width: 70vw;
+    width: 55vw;
     display: inline-block;
 
+    .slick-list {
+      padding-bottom: 15px;
+    }
+
     .slick-slide img {
-      height: 60vh;
-      width: 70vw;
+      width: 55vw;
     }
   }
 }

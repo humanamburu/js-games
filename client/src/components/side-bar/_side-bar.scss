@@ -27,3 +27,23 @@
   }
 }
 
+.user-helm {
+  overflow: hidden;
+  height: 50px;
+  padding-top: 2px;
+  text-align: center;
+
+  .ant-scroll-number {
+    top: 0;
+  }
+
+}
+
+.head {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  background: #eee;
+  display: inline-block;
+}
+

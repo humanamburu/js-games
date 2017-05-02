@@ -19,7 +19,7 @@ class MainWrapper extends React.Component {
                     breadcrumbs.map((location, index) => {
                         let text = !location && index ? 'index' : 'Home';
 
-                        return <Breadcrumb.Item>{location || text}</Breadcrumb.Item>
+                        return <Breadcrumb.Item key={index}>{location || text}</Breadcrumb.Item>
                     })
                 }
             </Breadcrumb>

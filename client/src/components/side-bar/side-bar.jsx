@@ -2,7 +2,7 @@ import './_side-bar.scss';
 
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu, Icon, Badge } from 'antd';
 
 export default class SideBar extends React.Component {
     constructor(props) {
@@ -42,6 +42,11 @@ export default class SideBar extends React.Component {
                           collapsed={this.state.collapsed}
                           onCollapse={this.onCollapse.bind(this)}>
                 <div className="logo">{this.state.logoText}</div>
+                <div className="user-helm">
+                    <Badge count={5}>
+                        <img src="https://cdn2.iconfinder.com/data/icons/helmet/512/sparta-soldier-helmet-warrior-head-safety-512.png" className="head" />
+                    </Badge>
+                </div>
                 <Menu theme="dark" mode={this.state.mode} defaultSelectedKeys={[this.props.selected]}>
                     {this.mapButtons(this.props.buttons)}
                 </Menu>
