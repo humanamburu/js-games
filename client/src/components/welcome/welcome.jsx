@@ -2,8 +2,6 @@ import './_welcome.scss';
 
 import React from "react";
 import { connect } from 'react-redux';
-
-import MainWrapper from 'components/main-wrapper/main-wrapper';
 import { Carousel } from 'antd';
 
 class Welcome extends React.Component {
@@ -11,7 +9,7 @@ class Welcome extends React.Component {
         const { username } = this.props;
 
         return (
-            <MainWrapper>
+            <div>
                 <h1>Hello, {username}!</h1>
                 <div className="text-content">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consectetur dignissimos explicabo facere fuga iste laboriosam necessitatibus nisi optio quasi quisquam repellendus, reprehenderit rerum sint tempore voluptatem, voluptatibus. Ad, consequatur?</p>
@@ -37,8 +35,7 @@ class Welcome extends React.Component {
                     <dt>Coffe</dt>
                     <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur consequuntur dolores eligendi harum hic, ipsum nobis non, numquam quaerat quidem ratione voluptas! Autem consectetur doloremque dolorum perspiciatis recusandae voluptatum?</dd>
                 </dl>
-
-            </MainWrapper>
+            </div>
         );
     }
 }

@@ -1,6 +1,7 @@
 import './_side-bar.scss';
 
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { Layout, Menu, Icon } from 'antd';
 
 export default class SideBar extends React.Component {
@@ -26,10 +27,10 @@ export default class SideBar extends React.Component {
         return array.map(({ key, icon, title, href }) => {
             return (
                 <Menu.Item key={key}>
-                    <a href={href}>
+                    <Link to={href}>
                         <Icon type={icon}/>
                         <span className="nav-text">{title}</span>
-                    </a>
+                    </Link>
                 </Menu.Item>
             );
         })

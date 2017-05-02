@@ -3,30 +3,30 @@ export default [
     key: 'main',
     title: 'Main Page',
     icon: 'appstore',
-    href: '#'
+    href: '/'
   },
   {
     key: 'profile',
     title: 'Profile',
     icon: 'meh-o',
-    href: '#'
+    href: '/profile'
   },
   {
     key: 'game',
     title: 'Game',
     icon: 'code',
-    href: '#'
+    href: '/game'
   },
   {
     key: 'results',
     title: 'Results',
     icon: 'pie-chart',
-    href: '#'
+    href: '/results'
   },
   {
     key: 'materials',
     title: 'Materials',
     icon: 'book',
-    href: '#'
+    href: '/materials'
   },
 ]

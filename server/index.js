@@ -10,7 +10,7 @@ app.use(appStatic);
 // handle every other route with index.html, which will contain
 // a script tag to your application's JavaScript file(s). [REACT-ROUTER]
 app.get('*', (request, response) => {
-    response.sendFile(`${staticPath}'/index.html`);
+    response.sendFile(`${staticPath}/index.html`);
 });
 
 app.listen(port, () => {
