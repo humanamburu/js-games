@@ -8,8 +8,8 @@
   "scripts": {
     "watch": "cross-env NODE_ENV=development webpack --watch",
     "build": "cross-env NODE_ENV=production webpack",
-    "server": "cross-env NODE_PATH=./ nodemon ./server/index.js",
-    "dev-server": "cross-env NODE_PATH=./ nodemon --ignore './client/' ./server/index.js"
+    "server": "cross-env NODE_PATH=./server/ nodemon --config './nodemon.json' ./server/index.js",
+    "dev-server": "cross-env NODE_PATH=./server/ nodemon --config './nodemon.json' ./server/index.js"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -43,6 +43,7 @@
     "react-router-redux": "next",
     "redux": "^3.6.0",
     "redux-actions": "^2.0.2",
-    "redux-immutable": "^4.0.0"
+    "redux-immutable": "^4.0.0",
+    "redux-thunk": "^2.2.0"
   }
 }

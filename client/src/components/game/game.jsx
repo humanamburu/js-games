@@ -2,7 +2,8 @@ import './_game.scss';
 
 import React from 'react';
 import { connect } from 'react-redux';
-import * as GameService from 'services/game';
+import { mountCommands, unmountCommands } from 'services/game';
+import { getLevel } from 'thunks/game';
 
 import { Timeline, Rate, Progress, Row, Col, Tag, Button, Icon, Alert, Spin, } from 'antd';
 
@@ -44,18 +45,21 @@ class Game extends React.Component {
     }
 
     componentDidMount() {
-        GameService.logWelcome();
-        GameService.mountCommands();
+        mountCommands();
     }
 
     componentWillUnmount() {
-        GameService.unmountCommands();
+        unmountCommands();
+    }
+
+    componentWillMount() {
+        this.props.fetch();
     }
 
     render() {
         const { level } = this.props;
 
-        if (!level) {
+        if (!level.get('tasks')) {
             return <Spin />;
         }
 
@@ -80,10 +84,6 @@ class Game extends React.Component {
                         </Timeline>
                     </Col>
                     <Col span={6} className="meta">
-                        <div className="timer">
-                            <span>Total time: </span>
-                            <span>00:05:12</span>
-                        </div>
                         <Progress type="circle" percent={level.get('progress')}/>
                     </Col>
                     <Col span={8}>
@@ -115,8 +115,12 @@ class Game extends React.Component {
         );
     }
 }
+const mapActionsToProps = {
+    fetch: getLevel,
+};
+
 const mapStateToProps = (state) => ({
     level: state.get('game').get('level'),
 });
 
-export default connect(mapStateToProps)(Game);
+export default connect(mapStateToProps, mapActionsToProps)(Game);

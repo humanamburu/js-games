@@ -1,4 +1,4 @@
-import * as Actions from 'actions/user';
+import * as Actions from 'action-types/user';
 import Immutable from 'immutable';
 
 const initial = Immutable.fromJS({

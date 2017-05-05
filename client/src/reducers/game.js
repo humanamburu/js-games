@@ -1,10 +1,11 @@
 import Immutable from 'immutable';
-import * as Actions from 'actions/game';
-
-import Level from 'stubs/level';
+import * as Actions from 'action-types/game';
 
 const initial = Immutable.fromJS({
-    level: Level,
+    level: {
+        progress: 0,
+        currentIdx: 0,
+    },
     started: false,
     time: 0,
 });
@@ -12,7 +13,7 @@ const initial = Immutable.fromJS({
 export default function gameReducer(state = initial, action = {}) {
     switch (action.type) {
         case Actions.SET_LEVEL:
-            return state.set('level', action.payload);
+            return state.mergeIn(['level'], action.payload);
         case Actions.RESET_LEVEL:
             return state.set('level', null);
         default:
