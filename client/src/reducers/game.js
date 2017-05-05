@@ -1,8 +1,10 @@
 import Immutable from 'immutable';
 import * as Actions from 'actions/game';
 
+import Level from 'stubs/level';
+
 const initial = Immutable.fromJS({
-    level: null,
+    level: Level,
     started: false,
     time: 0,
 });

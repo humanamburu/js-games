@@ -5,7 +5,7 @@
     padding-bottom: 30px;
   }
   .rate {
-    padding-top: 20px;
+    padding: 8px;
   }
 
   .timer {
@@ -19,5 +19,13 @@
 
   .navigation {
     padding-top: 15px;
+  }
+
+  .ant-alert-info {
+    display: inline-block;
+  }
+
+  .timeline {
+    margin-bottom: 10px;
   }
 }

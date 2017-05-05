@@ -8,8 +8,8 @@
   "scripts": {
     "watch": "cross-env NODE_ENV=development webpack --watch",
     "build": "cross-env NODE_ENV=production webpack",
-    "server": "cross-env NODE_PATH=./ node --ignore './client/*.js' ./server/index.js",
-    "dev-server": "cross-env NODE_PATH=./ nodemon --ignore './client/*.js' ./server/index.js"
+    "server": "cross-env NODE_PATH=./ nodemon ./server/index.js",
+    "dev-server": "cross-env NODE_PATH=./ nodemon --ignore './client/' ./server/index.js"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

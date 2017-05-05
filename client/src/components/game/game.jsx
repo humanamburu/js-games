@@ -1,19 +1,12 @@
 import './_game.scss';
 
 import React from 'react';
-import {
-    Timeline,
-    Rate,
-    Progress,
-    Row,
-    Col,
-    Tag,
-    Button,
-    Icon,
-    Alert,
-} from 'antd';
+import { connect } from 'react-redux';
+import * as GameService from 'services/game';
 
-export default class Game extends React.Component {
+import { Timeline, Rate, Progress, Row, Col, Tag, Button, Icon, Alert, Spin, } from 'antd';
+
+class Game extends React.Component {
     constructor(props) {
         super(props);
 
@@ -28,31 +21,62 @@ export default class Game extends React.Component {
         );
     }
 
+    *colors() {
+        const colors = ['pink', 'orange', 'cyan', 'blue', 'green', 'red'];
+        let i = 0;
+
+        while (true) {
+            yield colors[i];
+
+            i++;
+            if (i === colors.length) {
+                i = 0;
+            }
+        }
+    }
+
+    generateTags(tags) {
+        let colour = this.colors();
+
+        return tags.map((name, i) => {
+            return <Tag key={i} color={colour.next().value}>{name}</Tag>
+        });
+    }
+
+    componentDidMount() {
+        GameService.logWelcome();
+        GameService.mountCommands();
+    }
+
+    componentWillUnmount() {
+        GameService.unmountCommands();
+    }
+
     render() {
+        const { level } = this.props;
+
+        if (!level) {
+            return <Spin />;
+        }
+
         return (
             <Row className="game">
                 <Row>
-                    <h1 className="name">Tutorial</h1>
+                    <h1 className="name">{level.get('name')}</h1>
                 </Row>
                 <Row>
                     <Col span={10}>
-                        <Timeline>
-                            <Timeline.Item color="green">
-                                <h4>Easy arithmetic #1</h4>
-                                <p>Perform math operation for array</p>
-                            </Timeline.Item>
-                            <Timeline.Item>
-                                <h4>Plane object #2</h4>
-                                <p>Create a plane Object with required fields</p>
-                            </Timeline.Item>
-                            <Timeline.Item>
-                                <h4>Odds array #3</h4>
-                                <p>Generate ods array</p>
-                            </Timeline.Item>
-                            <Timeline.Item>
-                                <h4>Odds generator #4</h4>
-                                <p>Create a special odd-generator function</p>
-                            </Timeline.Item>
+                        <Timeline className="timeline">
+                            {
+                                level.get('tasks').map((task, i) => {
+                                    return (
+                                        <Timeline.Item key={i} color={task.get('status') ? 'green' : 'blue'}>
+                                            <h4>{task.get('name')}</h4>
+                                            <p>{task.get('description')}</p>
+                                        </Timeline.Item>
+                                    )
+                                })
+                            }
                         </Timeline>
                     </Col>
                     <Col span={6} className="meta">
@@ -60,16 +84,11 @@ export default class Game extends React.Component {
                             <span>Total time: </span>
                             <span>00:05:12</span>
                         </div>
-                        <Progress type="circle" percent={25}/>
+                        <Progress type="circle" percent={level.get('progress')}/>
                     </Col>
                     <Col span={8}>
                         <div>
-                            <Tag color="pink">Basics</Tag>
-                            <Tag color="red">Math</Tag>
-                            <Tag color="orange">Objects</Tag>
-                            <Tag color="green">Console</Tag>
-                            <Tag color="cyan">API</Tag>
-                            <Tag color="blue">Tutorial</Tag>
+                            {this.generateTags(level.get('tags'))}
                         </div>
                         <div className="rate">
                             <div ref={el => this.rateText}>{this.state.rateText}</div>
@@ -78,13 +97,17 @@ export default class Game extends React.Component {
                     </Col>
                 </Row>
                 <Row>
-                    <Alert message="Tip: Press the F12 on your keyboard to open the dev tools and start hacking!" />
+                    <div>
+                        {level.get('tips').map((tip, i) => <div key={i}><Alert message={tip}/></div>)}
+                    </div>
                     <Button.Group className="navigation">
                         <Button type="primary">
-                            <Icon type="left" />Go back
+                            <Icon type="left"/>
+                            <span>Prev</span>
                         </Button>
                         <Button type="primary">
-                            Go forward<Icon type="right" />
+                            <span>Next</span>
+                            <Icon type="right"/>
                         </Button>
                     </Button.Group>
                 </Row>
@@ -92,3 +115,8 @@ export default class Game extends React.Component {
         );
     }
 }
+const mapStateToProps = (state) => ({
+    level: state.get('game').get('level'),
+});
+
+export default connect(mapStateToProps)(Game);

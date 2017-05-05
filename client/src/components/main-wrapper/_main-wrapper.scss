@@ -14,11 +14,24 @@
     }
 
     .list {
-      padding: 25px 60px;
+      padding: 25px 40px;
       background: #fff;
-      min-height: 100%;
+      min-height: 80vh;
       display: flex;
       flex-direction: column;
+
+      .ant-spin-spinning {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 30px;
+        height: 30px;
+      }
+
     }
   }
 
@@ -31,6 +44,11 @@
       margin-left: 40px;
     }
   }
+
+  .ant-tag {
+    margin: 4px 8px;
+  }
+
 }
 
 .social {
