@@ -1,5 +1,3 @@
 export function level() {
-    return fetch('/level').then(function(res) {
-        return res.json();
-    });
+    return fetch('/api/level').then(res => res.json());
 }

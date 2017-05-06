@@ -63,7 +63,7 @@ module.exports = {
         'application': './client/index.jsx',
     },
     output: {
-        path: path.resolve(`${__dirname}/server/static/`),
+        path: path.resolve(`${__dirname}/dist`),
         filename: '[name].bundle.js',
     },
     resolve: {

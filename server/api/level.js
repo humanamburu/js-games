@@ -1,3 +1,5 @@
+const { Router } = require('express');
+
 const tasks = [
     {
         name: 'Easy arithmetic',
@@ -32,6 +34,15 @@ const level = {
     tasks: tasks,
 };
 
-module.exports = (req, res) => {
-    res.status(200).send(level);
+module.exports = (configuration) => {
+    const router = Router();
+
+    router.get('/', (req, res) => res.json(level));
+    router.use('/:id', (req, res) => {
+        const obj = Object.assign({ id: req.params.id }, level);
+
+        res.json(obj);
+    });
+
+    return router;
 };
