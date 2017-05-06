@@ -37,6 +37,7 @@
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "immutable": "^3.8.1",
+    "mongoose": "^4.9.7",
     "morgan": "^1.8.1",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",

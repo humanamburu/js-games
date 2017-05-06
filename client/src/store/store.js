@@ -1,6 +1,7 @@
 import { routerMiddleware } from 'react-router-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import sandbox from './sandbox';
 import reducers from 'reducers/reducers';
 import history from './history';
 
@@ -13,4 +14,4 @@ if (process.env.NODE_ENV !== 'production') {
     composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 }
 
-export default composeEnhancers(applyMiddleware(middleware, thunk))(createStore)(reducers);
+export default composeEnhancers(applyMiddleware(middleware, thunk, sandbox))(createStore)(reducers);

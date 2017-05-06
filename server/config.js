@@ -6,4 +6,5 @@ module.exports = {
     port: process.env.PORT || 8080,
     isProduction: process.env.NODE_ENV === 'production',
     version: version,
+    db: 'mongodb://localhost/web-knight',
 };

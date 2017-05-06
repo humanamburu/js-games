@@ -1,5 +1,5 @@
 import store from 'store/store';
-import { userAnswer } from 'actions/game';
+import { checkAnswer } from 'thunks/game';
 
 export function logWelcome() {
     console.info('API mounted.\nWelcome to the JS Game! This tutorial will help you with game basics.\n\nPlease type help() to show additional info.');
@@ -37,7 +37,9 @@ export function mountCommands() {
         return JSON.parse(task.get('data'));
     };
     window.answer = function (data) {
-        store.dispatch(userAnswer(data))
+        store.dispatch(checkAnswer(data))
+
+        return data;
     };
 }
 

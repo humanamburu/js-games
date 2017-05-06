@@ -1,12 +1,11 @@
 const { Router } = require('express');
 const level = require('./level');
 
-module.exports = (configuration) => {
+module.exports = ({ version }) => {
     const router = Router();
-    const { version } = configuration.config;
 
     router.get('/', (req, res) => res.json({ version }));
-    router.use('/level', level(configuration));
+    router.use('/level', level());
 
     return router;
 };

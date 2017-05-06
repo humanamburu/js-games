@@ -7,7 +7,7 @@ const initializeDatabase = require('./db');
 const API = require('./api');
 const createLogger = require('./helpers/logger');
 
-const { port, staticPath, isProduction, version } = config;
+const { port, staticPath, isProduction, version, db } = config;
 const server = express();
 const log = createLogger(version, 'info');
 const error = createLogger(version, 'error');
@@ -20,19 +20,16 @@ server.use(morgan(isProduction ? 'combined' : 'tiny'));
 log(`Running in ${isProduction ? 'PRODUCTION' : 'DEV'} mode with ${isProduction ? 'tiny' : 'combined'} logs`);
 server.use(bodyParser.json());
 
-initializeDatabase()
-    .then((db) => {
+initializeDatabase(db)
+    .then(() => {
         log(`initializeDatabase(): success`);
         // handle every other route with index.html, which will contain
         // a script tag to your application's JavaScript file(s). [REACT-ROUTER]
         //initialize main REST API
-        server.use('/api', API({ db, config }));
+        server.use('/api', API(config));
         server.listen(port, () => {
             log(`Server was started on port ${port}`);
             log('--------------------------------------------------------');
         });
         server.get('*', (req, res) => res.sendFile(`${staticPath}/index.html`));
-    })
-    .catch((err) => {
-        error(`Server initialization failed: ${err}`);
     });

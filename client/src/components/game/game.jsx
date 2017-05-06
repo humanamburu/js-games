@@ -74,8 +74,8 @@ class Game extends React.Component {
                             {
                                 level.get('tasks').map((task, i) => {
                                     return (
-                                        <Timeline.Item key={i} color={task.get('status') ? 'green' : 'blue'}>
-                                            <h4>{task.get('name')}</h4>
+                                        <Timeline.Item key={i} color={task.get('done') ? 'green' : 'blue'}>
+                                            <h4 className={task.get('done') ? 'done' : ''}>{task.get('name')}</h4>
                                             <p>{task.get('description')}</p>
                                         </Timeline.Item>
                                     )
@@ -90,7 +90,7 @@ class Game extends React.Component {
                         <div>
                             {this.generateTags(level.get('tags'))}
                         </div>
-                        <div className="rate">
+                        <div className="rate" style={{ opacity: this.props.finished ? 1 : 0}}>
                             <div ref={el => this.rateText}>{this.state.rateText}</div>
                             <Rate onChange={this.onRateChange.bind(this)}/>
                         </div>
@@ -100,7 +100,7 @@ class Game extends React.Component {
                     <div>
                         {level.get('tips').map((tip, i) => <div key={i}><Alert message={tip}/></div>)}
                     </div>
-                    <Button.Group className="navigation">
+                    <Button.Group className="navigation" style={{ opacity: this.props.finished ? 1 : 0}}>
                         <Button type="primary">
                             <Icon type="left"/>
                             <span>Prev</span>
@@ -121,6 +121,7 @@ const mapActionsToProps = {
 
 const mapStateToProps = (state) => ({
     level: state.get('game').get('level'),
+    finished: state.getIn(['game', 'finished']),
 });
 
 export default connect(mapStateToProps, mapActionsToProps)(Game);
