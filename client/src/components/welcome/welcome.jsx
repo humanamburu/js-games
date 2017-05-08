@@ -4,6 +4,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import { Carousel } from 'antd';
 
+//todo: use col and rows
 class Welcome extends React.Component {
     render() {
         const { username } = this.props;

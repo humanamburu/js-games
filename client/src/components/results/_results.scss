@@ -1,0 +1,17 @@
+.results {
+  .card {
+    margin-top: 20px;
+    margin-right: 15px;
+    text-align: center;
+
+    .ant-card {
+      margin-bottom: 5px;
+    }
+  }
+
+  .progress-purple {
+    .ant-progress-circle-path {
+      stroke: #8884d8;
+    }
+  }
+}

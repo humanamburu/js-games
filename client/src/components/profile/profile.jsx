@@ -29,7 +29,16 @@ export default class Profile extends React.Component {
                     </Col>
                     <Col span={14}>
                         <Card title="General" className="card">
-
+                            <dl className="info">
+                                <dt>Login:</dt>
+                                <dd>Gladiator08</dd>
+                                <dt>Email:</dt>
+                                <dd>Gladiator08@gmail.com</dd>
+                                <dt>Nickname:</dt>
+                                <dd>Gladiator08</dd>
+                                <dt>About me:</dt>
+                                <dd>Hello! I am test account for Web-knight game</dd>
+                            </dl>
                         </Card>
                     </Col>
                     <Col span={4}>

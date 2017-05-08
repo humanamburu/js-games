@@ -28,4 +28,18 @@
     margin-top: 8px;
     width: 100%;
   }
+
+  .info {
+    font-size: 16px;
+    text-align: left;
+
+    dt {
+      margin-top: 10px;
+      font-weight: 700;
+    }
+
+    dd {
+      padding: 5px 0;
+    }
+  }
 }
