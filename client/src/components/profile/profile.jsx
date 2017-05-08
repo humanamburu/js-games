@@ -43,6 +43,7 @@ export default class Profile extends React.Component {
                     </Col>
                     <Col span={4}>
                         <Card title="Controls" className="card">
+                            <Button className="control-button" type="ghost">Logout</Button>
                             <Button className="control-button" type="dashed">Change email</Button>
                             <Button className="control-button" type="dashed">Change password</Button>
                             <Button className="control-button" type="dashed">Change nickname</Button>

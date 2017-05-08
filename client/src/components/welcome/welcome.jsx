@@ -2,7 +2,7 @@ import './_welcome.scss';
 
 import React from "react";
 import { connect } from 'react-redux';
-import { Carousel } from 'antd';
+import { Carousel, Button, Row } from 'antd';
 
 //todo: use col and rows
 class Welcome extends React.Component {
@@ -10,8 +10,13 @@ class Welcome extends React.Component {
         const { username } = this.props;
 
         return (
-            <div>
+            <Row className="welcome">
                 <h1>Hello, {username}!</h1>
+                <div className="controls">
+                    <Button type="primary">Login</Button>
+                    <span> or </span>
+                    <Button type="primary">Registration</Button>
+                </div>
                 <div className="text-content">
                     <p>Learn To Program JavaScript is suitable for beginner programmers. Step-by-step it explains how to write JavaScript code to run in a web browser on Windows, Linux or Mac OS X.</p>
                     <p>This course explains all you need to know in order to write JavaScript and make sense of other people’s JavaScript code. Every step of the way you can follow along with ready-to-run code in in short, easy-to-understand JavaScript programs.</p>
@@ -37,7 +42,7 @@ class Welcome extends React.Component {
                     <dt>DevTools</dt>
                     <dd>The Chrome DevTools are a set of web authoring and debugging tools built into Google Chrome. Use the DevTools to iterate, debug, and profile your site.</dd>
                 </dl>
-            </div>
+            </Row>
         );
     }
 }

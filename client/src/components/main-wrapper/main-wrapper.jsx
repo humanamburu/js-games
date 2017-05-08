@@ -11,15 +11,16 @@ const { Header, Content } = Layout;
 
 class MainWrapper extends React.Component {
     parseBreadcrumbs() {
-        const breadcrumbs = this.props.location.split('/');
+        const breadcrumbs = this.props.location.split('/').slice(1);
 
         return (
-            <Breadcrumb>
+            <Breadcrumb separator=">">
+                <Breadcrumb.Item><Icon type="home" /> Home</Breadcrumb.Item>
                 {
                     breadcrumbs.map((location, index) => {
-                        let text = !location && index ? 'index' : 'Home';
+                        let text = !location ? 'index' : location;
 
-                        return <Breadcrumb.Item key={index}>{location || text}</Breadcrumb.Item>
+                        return <Breadcrumb.Item key={index}>{text[0].toUpperCase() + text.substring(1)}</Breadcrumb.Item>
                     })
                 }
             </Breadcrumb>

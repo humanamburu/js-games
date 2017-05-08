@@ -1,37 +1,48 @@
-.text-content {
-  margin: 20px 0;
-}
+.welcome {
+  position: relative;
 
-.carousel {
-  text-align: center;
+  .controls {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
 
-  .ant-carousel {
-    width: 55vw;
-    display: inline-block;
+  .text-content {
+    margin: 20px 0;
+  }
 
-    .slick-list {
-      padding-bottom: 15px;
-    }
 
-    .slick-slide img {
+  .carousel {
+    text-align: center;
+
+    .ant-carousel {
       width: 55vw;
+      display: inline-block;
+
+      .slick-list {
+        padding-bottom: 15px;
+      }
+
+      .slick-slide img {
+        width: 55vw;
+      }
     }
   }
-}
 
-.points {
-  margin-top: 50px;
-  display: flex;
+  .points {
+    margin-top: 50px;
+    display: flex;
 
-  dt {
-    font-size: 18px;
-    font-weight: 500;
-    margin-bottom: 10px;
-    padding: 5px 20px;
-  }
+    dt {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 10px;
+      padding: 5px 20px;
+    }
 
-  dd {
-    padding-bottom: 20px;
-    width: 30vw;
+    dd {
+      padding-bottom: 20px;
+      width: 30vw;
+    }
   }
 }
