@@ -1,0 +1,31 @@
+.profile {
+  font-size: 16px;
+
+  .avatar {
+    width: 150px;
+  }
+  .nickname {
+    margin: 10px 0;
+    font-size: 18px;
+  }
+
+  .card {
+    margin-top: 20px;
+    margin-right: 15px;
+    text-align: center;
+  }
+
+  .section-name {
+    padding: 5px 0;
+    text-align: left;
+  }
+
+  .badges {
+    padding: 10px 0;
+  }
+
+  .control-button {
+    margin-top: 8px;
+    width: 100%;
+  }
+}

@@ -98,7 +98,7 @@ class Game extends React.Component {
                 </Row>
                 <Row>
                     <div>
-                        {level.get('tips').map((tip, i) => <div key={i}><Alert message={tip}/></div>)}
+                        {level.get('tips').map((tip, i) => <div key={i}><Alert message={tip} showIcon/></div>)}
                     </div>
                     <Button.Group className="navigation" style={{ opacity: this.props.finished ? 1 : 0}}>
                         <Button type="primary">

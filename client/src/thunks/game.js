@@ -17,7 +17,7 @@ export function checkAnswer(answer) {
     return (dispatch) => {
         return http('/api/level/answer')
             .post({ answer })
-            .catch(() => dispatch(incorrectAnswer()))
             .then(() => dispatch(correctAnswer()))
+            .catch(() => dispatch(incorrectAnswer()));
     }
 }

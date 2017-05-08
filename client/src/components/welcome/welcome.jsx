@@ -12,7 +12,8 @@ class Welcome extends React.Component {
             <div>
                 <h1>Hello, {username}!</h1>
                 <div className="text-content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consectetur dignissimos explicabo facere fuga iste laboriosam necessitatibus nisi optio quasi quisquam repellendus, reprehenderit rerum sint tempore voluptatem, voluptatibus. Ad, consequatur?</p>
+                    <p>Learn To Program JavaScript is suitable for beginner programmers. Step-by-step it explains how to write JavaScript code to run in a web browser on Windows, Linux or Mac OS X.</p>
+                    <p>This course explains all you need to know in order to write JavaScript and make sense of other people’s JavaScript code. Every step of the way you can follow along with ready-to-run code in in short, easy-to-understand JavaScript programs.</p>
                 </div>
                 <div className="carousel">
                     <Carousel autoplay>
@@ -28,12 +29,12 @@ class Welcome extends React.Component {
                     </Carousel>
                 </div>
                 <dl className="points">
+                    <dt>Code</dt>
+                    <dd>You will begin by learning the core features of programming – variables, functions and data types. You will move on to learn about specific capabilities of JavaScript – how to use it to automate web pages, hide email addresses, swap stylesheets interactively capabilities of HTML5.</dd>
                     <dt>JavaScript</dt>
-                    <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequuntur culpa deleniti ea modi tempore voluptate voluptatum! Cupiditate dolorem, doloremque ipsa ipsam iste perspiciatis praesentium reiciendis, rerum tempora, tempore veniam.</dd>
-                    <dt>Milk</dt>
-                    <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur consequuntur dolores eligendi harum hic, ipsum nobis non, numquam quaerat quidem ratione voluptas! Autem consectetur doloremque dolorum perspiciatis recusandae voluptatum?</dd>
-                    <dt>Coffe</dt>
-                    <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur consequuntur dolores eligendi harum hic, ipsum nobis non, numquam quaerat quidem ratione voluptas! Autem consectetur doloremque dolorum perspiciatis recusandae voluptatum?</dd>
+                    <dd>JavaScript is the language of the web. If you need to program web sites to run on desktop computers or mobile devices, you have to know JavaScript.</dd>
+                    <dt>DevTools</dt>
+                    <dd>The Chrome DevTools are a set of web authoring and debugging tools built into Google Chrome. Use the DevTools to iterate, debug, and profile your site.</dd>
                 </dl>
             </div>
         );

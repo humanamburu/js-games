@@ -22,7 +22,7 @@ export default () => (
             <MainWrapper>
                 <Switch>
                     <Route exact path="/" component={Welcome}/>
-                    <Route path="/game" component={Game} onEnter={() => console.log('enterd')}/>
+                    <Route path="/game" component={Game}/>
                     <Route path="/profile" component={Profile}/>
                     <Route path="/results" component={Results}/>
                     <Route path="/materials" component={Materials}/>
